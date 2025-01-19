@@ -1,0 +1,18 @@
+	class ==> node 
+    class ==> linked list
+    
+    bool isempty()
+
+	void InsertFirst(int newvalue)
+
+	void display()
+
+	int count()
+
+	bool isfound(int key)
+
+	void insertbefore(int item, int newvalue)
+
+	void append(int newvalue)
+
+	void Delete(int item)
