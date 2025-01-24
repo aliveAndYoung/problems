@@ -23,7 +23,7 @@ int main()
         {
             minn = cor[num - 1] - cor[num - 2];
             maxx = cor[num - 1] - cor[0];
-        }
+        } 
         else
         {
             minn = min(cor[a] - cor[a - 1], cor[a + 1] - cor[a]);
