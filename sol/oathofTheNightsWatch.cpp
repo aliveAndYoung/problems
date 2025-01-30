@@ -10,11 +10,14 @@ int main()
     vector<int> vec(all, 0);
     for (int i = 0; i < all; i++)
         cin >> vec[i];
-    int min = *(min_element(vec.begin(),vec.end()));    
-    int max = *(min_element(vec.begin(),vec.end()));
-    int cMax = count(vec.begin() , vec.end() , max) ;  
-    int cMin = count(vec.begin() , vec.end() , min) ;
-    help -= (cMax + cMin) ;    
+    int min = *(min_element(vec.begin(), vec.end()));
+    int max = *(max_element(vec.begin(), vec.end()));
+    int cMax = count(vec.begin(), vec.end(), max);
+    int cMin = count(vec.begin(), vec.end(), min);
+    if (min == max)
+        help -= cMax;
+    else
+        help -= (cMax + cMin);
     if (all < 3)
         cout << 0;
     else
