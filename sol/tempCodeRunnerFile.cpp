@@ -1,3 +1,1 @@
-
-            vec[currNum] = true ;
-            cout<< true << "<--"<<endl;
+ring le
