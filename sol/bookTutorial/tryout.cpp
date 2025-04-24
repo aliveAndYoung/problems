@@ -26,7 +26,7 @@ string to_string(__int128_t num)
 int main()
 {
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(nullptr); 
 
     
 }
