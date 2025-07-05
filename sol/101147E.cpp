@@ -1,76 +1,57 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> BFS(int n, int m, vector<vector<int>> edges, int s)
-{
-    vector<vector<int>> adjacencyArr(n);
-    for (auto edg : edges)
-    {
-        adjacencyArr[edg[0] - 1].push_back(edg[1] - 1);
-        adjacencyArr[edg[1] - 1].push_back(edg[0] - 1);
-    }
-    vector<int> distances(n, -1);
-    queue<pair<int, int>> myQ;
-    myQ.push({s - 1, 0});
-    distances[s - 1] = 0;
-    while (!myQ.empty())
-    {
-        pair<int, int> curr = myQ.front();
-        myQ.pop();
-        for (int node : adjacencyArr[curr.first])
-        {
-            if (distances[node] == -1)
-            {
-                myQ.push({node, curr.second + 1});
-                distances[node] = curr.second + 1;
-            }
-        }
-    }
-    vector<int> newDis;
-    for (int dis : distances)
-    {
-        if (dis == -1)
-            newDis.push_back(dis);
-        else if (dis == 0)
-            continue;
-        else
-            newDis.push_back(dis * 6);
-    }
-
-    return newDis;
-};
-
 int main()
 {
-    int q;
-    cin >> q;
-    while (q--)
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int T;
+    cin >> T;
+    while (T--)
     {
-        int n, m;
-        cin >> n >> m;
-        vector<vector<int>> edgs;
-        for (int i = 0; i < m; i++)
-        {
-            int a, b;
-            cin >> a >> b;
-            vector<int> edg = {a, b};
-            edgs.push_back(edg);
-        }
-        int start;
-        cin >> start;
+        int N;
+        cin >> N;
+        vector<int> d(N);
+        for (int i = 0; i < N; i++)
+            cin >> d[i];
 
-        vector<int> ans = BFS(n, m, edgs, start);
-
-        for (int dis : ans)
+        // Build reversed adjacency list
+        vector<vector<int>> adj(N);
+        for (int i = 0; i < N; i++)
         {
-            if (dis == -1)
-                cout << dis << " ";
-            else if (dis == 0)
-                continue;
-            else
-                cout << dis * 6 << " ";
+            if (i + d[i] < N)
+            {
+                adj[i + d[i]].push_back(i);
+            }
+            if (i - d[i] >= 0)
+            {
+                adj[i - d[i]].push_back(i);
+            }
         }
-        cout << "\n";
+
+        // BFS from N-1
+        vector<int> distancess(N, -1);
+        queue<pair<int, int>> myQ;
+        myQ.push({N - 1, 0});
+        distancess[N - 1] = 0;
+        while (!myQ.empty())
+        {
+            pair<int, int> curr = myQ.front();
+            myQ.pop();
+            for (int i = 0; i < adj[curr.first].size(); i++)
+            {
+                if (distancess[adj[curr.first][i]] == -1)
+                {
+                    distancess[adj[curr.first][i]] = curr.second + 1;
+                    myQ.push({adj[curr.first][i], curr.second + 1});
+                }
+            }
+        }
+
+        // Output distances from each shop
+        for (int i = 0; i < N; i++)
+            cout << distancess[i] << "\n";
     }
     return 0;
 }
