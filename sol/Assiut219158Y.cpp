@@ -10,9 +10,13 @@ int main()
     cin.tie(nullptr);
     ll a, b, c, d, ans;
     cin >> a >> b >> c >> d;
-    ans =( ((a * b) % 100000) * ((c * d) % 100000) )% 100000;
-    string preserveZero = to_string(ans);
-    cout
-        << preserveZero.substr(preserveZero.size()-3,2);
+    ans = (((a % 100) * (b % 100)) % 100 * ((c % 100) * (d % 100) % 100)) % 100;
+    if (ans < 10)
+    {
+        cout << "0" << ans;
+        return 0;
+    }
+
+    cout << ans;
     return 0;
 }
