@@ -1,18 +1,2 @@
-// by LIFECOULDBEDREAM
-// 2025/09/19 12:36
-
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    ll a, b, c, d, ans;
-    cin >> a >> b >> c >> d;
-    ans =( ((a * b) % 100000) * ((c * d) % 100000) )% 100000;
-    string preserveZero = to_string(ans);
-    cout
-        << preserveZero.substr(preserveZero.size()-3,2);
-    return 0;
-}
+= 0 && y != 0)
+        cout << "Eix
