@@ -9,13 +9,13 @@ int main()
     cin.tie(nullptr);
     int n;
     cin >> n;
-    if (n == 1)
-    {
-        cout << "*";
-        return 0;
-    }
+    // if (n == 1)
+    // {
+    //     cout << "*";
+    //     return 0;
+    // }
     string out = "*", space = "";
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i < n; i++)
         space += " ";
 
     while (n--)
@@ -23,8 +23,8 @@ int main()
 
         cout << space << out << "\n";
         out += "**";
-        space.pop_back();
+        if (!space.empty())
+            space.pop_back();
     }
-
     return 0;
 }
