@@ -17,10 +17,10 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> _vec[i];
     for (int i = 0; i < n; i++)
-        (_vec[i] > myMax.first) && (myMax = {_vec[i], i});
+        (_vec[i] > myMax.first) && (myMax = {_vec[i], i}).first;
 
     for (int i = 0; i < n; i++)
-        (_vec[i] < myMin.first) && (myMin = {_vec[i], i});
+        (_vec[i] < myMin.first) && (myMin = {_vec[i], i}).first;
 
     // swap
     int temp = myMin.first;
