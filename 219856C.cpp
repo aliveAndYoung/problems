@@ -1,0 +1,28 @@
+// by LIFECOULDBEDREAM
+// 2025/10/02 15:54
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    string a, b;
+    cin >> a >> b;
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (a[i] < b[i])
+        {
+            cout << a;
+            return 0;
+        }
+        if (a[i] > b[i])
+        {
+            cout << b;
+            return 0;
+        }
+    }
+    cout << a;
+
+    return 0;
+}
