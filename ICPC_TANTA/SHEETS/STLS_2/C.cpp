@@ -7,22 +7,23 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    set<int> table;
-    int maxx = 0, n, curr;
+    int table = 0, maxx = 0, n, curr;
+    vector<int> bag(1e5 + 5, 0);
     cin >> n;
+    n *= 2;
     while (n--)
     {
         cin >> curr;
-        if (table.count(curr) == 0)
-        {
-            table.insert(curr);
-            maxx = max(maxx, int(table.size()));
-        }
+        bag[curr]++;
+        if (bag[curr] > 1)
+            table--;
         else
         {
-            table.erase(curr);
+            table++;
+            maxx = max(maxx, table);
         }
     }
+
     cout << maxx;
 
     return 0;
