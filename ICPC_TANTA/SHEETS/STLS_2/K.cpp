@@ -20,44 +20,42 @@ int main()
             cout << "NO\n";
             continue;
         }
-        int j = 0;
-        for (int i = 0; i < s.size(); i++)
+        int j = 0, i = 0;
+        while (i < int(s.size()) && j < int(t.size()))
         {
-            for (int jj = j; jj < t.size(); jj++)
+            if (s[i] == t[j])
             {
-                if (s[i] == t[jj])
-                {
-                    j = jj + 1;
-                    subSeq += 1;
-                    break;
-                }
+                subSeq++;
+                i++;
             }
+            j++;
         }
+
         if (subSeq != s.size())
         {
             cout << "NO\n";
             continue;
         }
-        map<char, int> mp;
-        for (char c : p)
-            mp[c]++;
+        vector<int> freq(26, 0);
+        for (char &c : p)
+            freq[int(c) - int('a')]++;
 
-        for (char c : s)
-            mp[c]++;
-
-        bool canForm = true;
-        for (char c : t)
+        for (char &c : s)
+            freq[int(c) - int('a')]++;
+        for (char &c : t)
+            freq[int(c) - int('a')]--;
+        bool possible = true;
+        for (int &count : freq)
         {
-            if (mp[c] > 0)
-                mp[c]--;
-            else
+            if (count < 0)
             {
-                canForm = false;
-                cout << "NO\n";
+                possible = false;
             }
         }
-        if (canForm)
+        if (possible)
             cout << "YES\n";
+        else
+            cout << "NO\n";
     }
     return 0;
 }
