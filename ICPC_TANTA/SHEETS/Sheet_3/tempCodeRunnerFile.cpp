@@ -1,3 +1,1 @@
- v[i][j - i + 1] = counter;
-                counter++;
-            
+v[i] % b
