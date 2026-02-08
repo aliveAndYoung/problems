@@ -29,6 +29,7 @@ int main()
         sort(nl.begin(), nl.end());
         int curr_robot = 1;
         ll last_spike = -0x7fffffff;
+        set<int> s;
         map<int, pair<ll, ll>> mp;
         for (int i = 0; i < n + m; i++)
         {
@@ -49,6 +50,7 @@ int main()
             if (nl[i].second == 'R')
             {
                 mp[curr_robot].second = last_spike - nl[i].first;
+                s.insert(curr_robot);
                 curr_robot--;
             }
             else
@@ -63,8 +65,9 @@ int main()
             nearst_right[i - 1] = {mp[i].second, i};
         }
 
-        sort(nearst_left.begin(), nearst_left.end(), greater<pair<ll, ll>>());
-        sort(nearst_right.begin(), nearst_right.end());
+        sort(nearst_left.begin(), nearst_left.end());
+        sort(nearst_right.begin(), nearst_right.end(), greater<pair<ll, ll>>());
+        int curr_nearest_left = nearst_left.size() - 1, curr_nearest_right = nearst_left.size() - 1;
         int curr_pos = 0;
         string ins;
         cin >> ins;
@@ -74,19 +77,23 @@ int main()
             if (c == 'R')
             {
                 curr_pos++;
-                while (nearst_right.size() && nearst_right[0].first <= curr_pos)
+                // while (nearst_right.size() && nearst_right[0].first <= curr_pos)
+                while (curr_nearest_right >= 0 && nearst_right[curr_nearest_right].first <= curr_pos)
                 {
-                    mp.erase(nearst_right[0].second);
-                    nearst_right.erase(nearst_right.begin());
+                    mp.erase(nearst_right[curr_nearest_right].second);
+                    curr_nearest_right--;
+                    // nearst_right.erase(nearst_right.begin());
                 }
             }
             else
             {
                 curr_pos--;
-                while (nearst_left.size() && nearst_left[0].first >= curr_pos)
+                // while (nearst_left.size() && nearst_left[0].first >= curr_pos)
+                while (curr_nearest_left >= 0 && nearst_left[curr_nearest_left].first >= curr_pos)
                 {
-                    mp.erase(nearst_left[0].second);
-                    nearst_left.erase(nearst_left.begin());
+                    mp.erase(nearst_left[curr_nearest_left].second);
+                    curr_nearest_left--;
+                    // nearst_left.erase(nearst_left.begin());
                 }
             }
             cout << mp.size() << ' ';
