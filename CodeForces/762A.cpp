@@ -33,7 +33,7 @@ int main()
     if (count * 2 >= k)
     {
         ll sub_count = count * 2;
-        if (sqrt(count) * sqrt(count) == count)
+        if (ll(sqrtl(n)) * ll(sqrtl(n)) == n)
             sub_count--;
         for (ll i = 1; i * i <= n; i++)
         {
@@ -41,8 +41,7 @@ int main()
             {
                 if (sub_count == k)
                 {
-                    // if (n / i == i)
-                    //     continue;
+
                     cout << n / i << endl;
                     return 0;
                 }
@@ -53,10 +52,8 @@ int main()
             }
         }
     }
-    else
-    {
-        cout << -1 << endl;
-    }
+
+    cout << -1 << endl;
 
     return 0;
 }
