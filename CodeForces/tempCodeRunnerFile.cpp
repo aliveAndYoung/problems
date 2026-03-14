@@ -1,1 +1,1 @@
-ans = max(ans, mid);
+int i = 1; i <= n; i++)
