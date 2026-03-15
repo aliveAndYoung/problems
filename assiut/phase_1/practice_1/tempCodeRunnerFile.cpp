@@ -1,1 +1,1 @@
-k - it 
+  grid[i][j] = grid[i][j] + grid[i - 1][j + 1];
