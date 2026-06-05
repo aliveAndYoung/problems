@@ -1,0 +1,1 @@
+(ans == pair{-1, -1}) ? "not found\n" : "found\n"
