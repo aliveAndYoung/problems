@@ -18,7 +18,7 @@ signed main()
     for (int i = 0; i < n; i++)
         cin >> b[i];
 
-    int l = 0, r = 1e9, mid, z, x = 0, y;
+    int l = 0, r = 1e10, mid, z, x = 0, y;
     while (l <= r)
     {
         mid = l + (r - l) / 2;
