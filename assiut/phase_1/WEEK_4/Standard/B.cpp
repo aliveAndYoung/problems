@@ -31,8 +31,8 @@ signed main()
         bool steer = false;
         for (int i = 0; i < n; i++)
         {
-            if (_v[i] > curr)
-                count++, curr = curr + mid;
+            if (_v[i] >= curr)
+                count++, curr = _v[i] + mid;
 
             if (count == c)
                 steer = true, ans = max(ans, mid);
