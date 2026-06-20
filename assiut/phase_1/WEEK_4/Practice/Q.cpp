@@ -23,9 +23,20 @@ signed main()
         for (int i = 0; i < _v.size(); i++)
             if (_v[i] + _v[i] >= a && _v[i] + _v[i] <= b)
                 count++;
-        for (int i = 0; i < _v.size(); i++)
+        l = 0;
+        r = _v.size() - 1;
+        while (l < r)
         {
-            l = lower_bound(_v.begin(), _v.end(), a - _v[i]) - _v.begin();
+            if (_v[l] + _v[r] > b)
+                r--;
+            else if (_v[l] + _v[r] < a)
+                l++;
+            else
+            {
+                temp = upper_bound(_v.begin(), _v.begin() + r, b - _v[r]) - _v.begin();
+                count = count + abs(temp - l);
+                r--;
+            }
         }
 
         cout << count << '\n';
