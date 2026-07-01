@@ -1,4 +1,6 @@
-for (int j = 0; j < ans[i].size(); j++)
-            cout << ans[i][j] << " ";
-        cout << '\n';
-    
+    // int n;
+    // cin >> n;
+    // int mask = 0, counter = 0, ans = 0;
+    // vector<int> _v(n);
+    // for (int i = 0; i < n; i++)
+    //     cin >> _v[i];

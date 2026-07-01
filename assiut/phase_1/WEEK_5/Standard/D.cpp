@@ -15,7 +15,7 @@ signed main()
     vector<vector<int>> ans(1 << n);
     for (int i = 0; i < n; i++)
         cin >> _v[i];
-    sort(_v.begin(), _v.end());
+    // sort(_v.begin(), _v.end());
     for (int i = 0; i < 1 << n; i++)
         for (int j = 0; j < n; j++)
             if (((i >> j) & 1) == 1)
